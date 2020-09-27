@@ -1,0 +1,46 @@
+// O(v) solution where v is the number of vertices
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define ull unsigned long long
+#define pii pair<int,int>
+#define mod 1000000007
+#define pb push_back()
+
+class node{
+public:
+    int data;
+    node *left,*right;
+};
+
+node* newNode(int key) 
+{ 
+    node* Node = new node; 
+    Node->data = key; 
+    Node->left = Node->right = NULL; 
+    return (Node); 
+} 
+
+int sum_of_nodes(node* root){
+    if(root==NULL)
+        return 0;
+    return root->data + sum_of_nodes(root->left) + sum_of_nodes(root->right);
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    node* root = newNode(1);
+    root->left = newNode(2); 
+    root->right = newNode(3); 
+    root->left->left = newNode(4); 
+    root->left->right = newNode(5); 
+    root->right->left = newNode(6); 
+    root->right->right = newNode(7); 
+    root->right->left->right = newNode(8); 
+    root->right->left->left = newNode(9);
+    cout<<sum_of_nodes(root)<<endl; 
+    return 0;
+}
